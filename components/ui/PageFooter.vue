@@ -3,7 +3,8 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-  <div class="w-full py-4 text-center font-bold bg-green text-sky-700">
-    &copy; {{ currentYear }} PreVue Land. Powered by Nuxt 3 & Directus
-  </div>
+  <footer class="w-full py-4 text-center font-bold bg-green text-sky-700">
+    &copy; {{ currentYear }} PreVue Land. Powered by Nuxt and Directus. Hosted
+    on Netlify
+  </footer>
 </template>
