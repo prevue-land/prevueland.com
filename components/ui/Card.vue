@@ -13,6 +13,8 @@ const props = defineProps<Props>();
 
 const { getThumbnail } = useDirectusFiles();
 
+const coverUrl = getThumbnail(props.cover, { format: 'jpg', fit: 'cover' });
+
 const coverAltText = `Cover image for ${props.title}`;
 
 const footerLinkText =
@@ -21,15 +23,13 @@ const footerLinkText =
 const footerLinkDestination =
   props.category === 'article' ? `/articles/${props.slug}` : props.preview_link;
 
-const footerLinkTarget = props.category === 'article' ? '_self' : '_blank';
+const footerLinkTarget = props.category === 'article' ? undefined : '_blank';
 
 const formattedDatePublished = new Intl.DateTimeFormat('en-GB', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 }).format(new Date(props.date_published));
-
-const refresh = () => refreshNuxtData('article');
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const refresh = () => refreshNuxtData('article');
     >
       <img
         class="lg:h-48 md:h-36 w-full object-cover object-center"
-        :src="getThumbnail(props.cover, { format: 'jpg', fit: 'cover' })"
+        :src="coverUrl"
         :alt="coverAltText"
       />
       <div class="h-full p-5 flex flex-col justify-between items-center">
