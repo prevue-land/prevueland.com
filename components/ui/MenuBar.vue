@@ -33,12 +33,12 @@ const menuItems = ref<MenuItem[]>([
     title: 'Hashnode',
     link: 'https://prevueland.hashnode.dev',
     target: '_blank'
-  },
-  {
-    title: 'RSS',
-    link: '/rss.xml',
-    target: '_blank'
   }
+  // {
+  //   title: 'RSS',
+  //   link: '/rss.xml',
+  //   target: '_blank'
+  // }
 ]);
 </script>
 

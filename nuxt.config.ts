@@ -14,8 +14,8 @@ export default defineNuxtConfig({
     '@nuxt-modules/newsletter',
     'nuxt-jsonld',
     'nuxt-social-tags',
-    'nuxt-directus',
-    'nuxt-feed-module'
+    'nuxt-directus'
+    // 'nuxt-feed-module'
   ],
   socialtags: {
     enabled: true,
