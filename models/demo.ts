@@ -1,6 +1,6 @@
 export interface Demo {
   id: number;
-  date_published: Date | string;
+  date_published: string;
   title: string;
   slug: string;
   preview_link: string;
