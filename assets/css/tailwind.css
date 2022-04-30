@@ -18,7 +18,7 @@
 
   p {
     overflow-wrap: break-word;
-    @apply my-4 leading-9;
+    @apply my-4 leading-10;
   }
 
   a {
@@ -41,8 +41,8 @@
     @apply my-3 pl-3 border-l-4 border-l-sky text-gray-100 italic;
   }
 
-  :is(p, li) > code {
-    @apply bg-sky-800 text-green;
+  :is(h2, p, li) > code {
+    @apply bg-sky-800 text-green p-1 whitespace-nowrap;
   }
 
   #content > ul {
@@ -50,11 +50,11 @@
   }
 
   .hljs {
-    @apply whitespace-pre overflow-x-auto;
+    @apply whitespace-pre overflow-x-auto p-4;
   }
 
   ::-webkit-scrollbar {
-    @apply md:w-3.5;
+    @apply md:w-3;
   }
 
   ::-webkit-scrollbar-track {
