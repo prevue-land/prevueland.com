@@ -22,7 +22,7 @@ const { pending, data, error } = await useAsyncData('allDemos', () =>
 </script>
 
 <template>
-  <div class="flex flex-col items-center px-0 pt-24 pb-7 space-y-7 md:px-10">
+  <div class="flex flex-col items-center px-0 pt-20 pb-8 space-y-7 md:px-10">
     <div class="text-center text-4xl font-bold">All demos</div>
     <UiLoadingSpinner v-if="pending" class="border-white" />
     <template v-else>
