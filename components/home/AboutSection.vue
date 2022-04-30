@@ -13,7 +13,7 @@
           loading="lazy"
         />
       </div>
-      <div class="max-w-xl leading-9 flex flex-col space-y-6">
+      <div class="max-w-xl leading-9 flex flex-col">
         <p>
           Hi! My name is Maciej Pędzich, but you can call me
           <strong>Mac</strong>. I started PreVue Land, because I'd been looking
