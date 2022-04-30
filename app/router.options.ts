@@ -25,7 +25,7 @@ export default <RouterConfig>{
     if (savedPosition) {
       return savedPosition;
     } else if (from.name !== to.name || !to.hash) {
-      return { x: 0, y: 0 };
+      return window.scrollTo(0, 0);
     } else {
       const menuBar = document.querySelector('#menubar');
       const scrollTargetElement = await querySelectorWithDelay(to.hash);
