@@ -6,6 +6,11 @@ const { pending, data, error } = await useLazyAsyncData('latestArticles', () =>
   getItems<Article>({
     collection: 'articles',
     params: {
+      filter: {
+        status: {
+          _eq: 'published'
+        }
+      },
       fields: ['date_published', 'title', 'slug', 'description', 'cover'],
       sort: '-date_published',
       limit: 3
