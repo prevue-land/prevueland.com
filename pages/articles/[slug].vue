@@ -4,6 +4,8 @@ import { Article } from '~/models/article';
 const route = useRoute();
 const { $mdit } = useNuxtApp();
 const { getItems } = useDirectusItems();
+const { getThumbnail } = useDirectusFiles();
+const { updateSocialTags } = useSocialTags();
 
 const slug = route.params.slug as string;
 
@@ -29,11 +31,34 @@ const { pending, data, error } = await useAsyncData(slug, () =>
 );
 
 const [article] = data.value;
-const formattedDatePublished = new Intl.DateTimeFormat('en-GB', {
+const coverUrl = getThumbnail(article.cover, { format: 'jpg', fit: 'cover' });
+
+const datePublished = new Date(article.date_published);
+const displayDatePublished = new Intl.DateTimeFormat('en-GB', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
-}).format(new Date(article.date_published));
+}).format(datePublished);
+
+useHead({
+  title: `PreVue Land - ${article.title}`,
+  meta: [{ name: 'description', content: article.description }]
+});
+
+updateSocialTags({
+  title: `PreVue Land - ${article.title}`,
+  description: article.description,
+  img: coverUrl
+});
+
+useJsonld({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.description,
+  datePublished: datePublished.toISOString(),
+  image: coverUrl
+});
 </script>
 
 <template>
@@ -49,7 +74,7 @@ const formattedDatePublished = new Intl.DateTimeFormat('en-GB', {
           <p
             class="tracking-widest text-md title-font font-medium text-green mb-3"
           >
-            {{ formattedDatePublished }}
+            Published on {{ displayDatePublished }}
           </p>
         </div>
         <div id="content" v-html="$mdit.render(article.content)"></div>
