@@ -1,9 +1,9 @@
 <script setup lang="ts">
-type MenuItem = {
+interface MenuItem {
   title: string;
   link: string;
   target?: '_blank';
-};
+}
 
 const mobileMenuHidden = ref(true);
 const menuItems = ref<MenuItem[]>([
@@ -32,6 +32,11 @@ const menuItems = ref<MenuItem[]>([
   {
     title: 'Hashnode',
     link: 'https://prevueland.hashnode.dev',
+    target: '_blank'
+  },
+  {
+    title: 'RSS',
+    link: '/rss.xml',
     target: '_blank'
   }
 ]);
@@ -96,7 +101,7 @@ const menuItems = ref<MenuItem[]>([
         :class="{ hidden: mobileMenuHidden }"
       >
         <ul
-          class="list-none flex flex-col mt-5 space-y-4 text-center md:flex-row md:space-x-5 md:space-y-0 md:mt-0 md:text-sm md:font-medium"
+          class="list-none flex flex-col mt-5 ml-0 space-y-4 text-center md:flex-row md:space-x-5 md:space-y-0 md:mt-0 md:text-sm md:font-medium"
         >
           <li
             v-for="item in menuItems"
